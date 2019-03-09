@@ -1,0 +1,16 @@
+package com.capgemini.services;
+
+import java.math.BigDecimal;
+import java.util.List;
+import com.capgemini.beans.Customer;
+import com.capgemini.exceptions.InsufficientBalance;
+import com.capgemini.exceptions.MobileNumbeDoesNotExist;
+import com.capgemini.exceptions.MobileNumberAlreadyExist;
+
+public interface WalletService {
+	public Customer createAccount(String name, String mobileno, BigDecimal balance) throws MobileNumbeDoesNotExist, MobileNumberAlreadyExist;
+	public Customer showBalance(String mobileno) throws MobileNumbeDoesNotExist;
+	public List<Customer> fundTransfer(String sourceMobileno, String destinationMobileno, BigDecimal amount) throws InsufficientBalance, MobileNumbeDoesNotExist;
+	public Customer depositAmount(String mobileno, BigDecimal amount) throws MobileNumbeDoesNotExist ;
+	public Customer withdrawAmount(String mobileno, BigDecimal amount) throws InsufficientBalance, MobileNumbeDoesNotExist;
+}
